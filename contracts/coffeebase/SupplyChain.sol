@@ -195,7 +195,7 @@ contract SupplyChain is RetailerRole, FarmerRole, DistributorRole, ConsumerRole{
   }
 
   // Define a function 'packItem' that allows a farmer to mark an item 'Packed'
-  function packItem(uint _upc) public processed(_upc) verifyCaller(items[_upc].ownerID) onlyFarmer {
+  function packItem(uint _upc) public processed(_upc) verifyCaller(items[_upc].ownerID) onlyFarmer() {
     // Update the appropriate fields
     items[_upc].itemState = State.Packed;
     // Emit the appropriate event
@@ -203,7 +203,7 @@ contract SupplyChain is RetailerRole, FarmerRole, DistributorRole, ConsumerRole{
   }
 
   // Define a function 'sellItem' that allows a farmer to mark an item 'ForSale'
-  function sellItem(uint _upc, uint _price) public packed(_upc) verifyCaller(items[_upc].ownerID) onlyFarmer {
+  function sellItem(uint _upc, uint _price) public packed(_upc) verifyCaller(items[_upc].ownerID) onlyFarmer() {
     // Update the appropriate fields
     items[_upc].itemState = State.ForSale;
     items[_upc].productPrice = _price;
