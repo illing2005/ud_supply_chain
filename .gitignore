@@ -1,4 +1,6 @@
 .idea
+.infura
+.secret
 node_modules
 package-lock.json
 
